@@ -2,8 +2,6 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Card, Link, Container, Typography } from '@mui/material';
-// hooks
-import useResponsive from '../hooks/useResponsive';
 // sections
 import { LoginForm } from '../sections/auth/login';
 
@@ -25,7 +23,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const smUp = useResponsive('up', 'sm');
   return (
       <RootStyle>
         <Container maxWidth="sm">

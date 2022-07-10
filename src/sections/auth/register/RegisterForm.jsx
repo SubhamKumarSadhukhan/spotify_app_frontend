@@ -5,40 +5,45 @@ import { useFormik, Form, FormikProvider } from 'formik';
 // material
 import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useDispatch} from "react-redux"
 // component
-
+import { register } from "../../../redux/actions/userAction";
 export default function LoginForm() {
+  const dispatch=useDispatch()
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-
   const LoginSchema = Yup.object().shape({
+    name:Yup.string().min(3).required('Invalid Name'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    password: Yup.string().min(8).required('Password is required'),
   });
 
   const formik = useFormik({
     initialValues: {
+    name:'',
       email: '',
       password: '',
-      remember: true,
     },
     validationSchema: LoginSchema,
     onSubmit: async (values, { setSubmitting }) => {
+      dispatch(register(values))
       setSubmitting(false);
-      if (success) navigate('/dashboard/app', { replace: true });
     },
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
-
-  const handleShowPassword = () => {
-    setShowPassword((show) => !show);
-  };
-
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <Stack spacing={3}>
+        <Stack spacing={3} sx={{ my: 2 }}>
+        <TextField
+            fullWidth
+            autoComplete="name"
+            type="text"
+            label="Name"
+            {...getFieldProps('name')}
+            error={Boolean(touched.name && errors.name)}
+            helperText={touched.name && errors.name}
+          />
           <TextField
             fullWidth
             autoComplete="username"
@@ -51,37 +56,20 @@ export default function LoginForm() {
 
           <TextField
             fullWidth
-            autoComplete="current-password"
-            type={showPassword ? 'text' : 'password'}
+            type="password"
             label="Password"
             {...getFieldProps('password')}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleShowPassword} edge="end">
-                    {/* <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} /> */}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
             error={Boolean(touched.password && errors.password)}
             helperText={touched.password && errors.password}
           />
         </Stack>
-
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-          <FormControlLabel
-            control={<Checkbox {...getFieldProps('remember')} checked={values.remember} />}
-            label="Remember me"
-          />
-
-          <Link component={RouterLink} variant="subtitle2" to="/forgetpassword" underline="hover">
-            Forgot password?
+        <Stack direction="row" alignItems="flex-end" justifyContent="space-between" sx={{ my: 2 }}>
+          <Link component={RouterLink} variant="subtitle2" to="/login" underline="hover">
+            Have account?
           </Link>
         </Stack>
-
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-          Login
+          Register
         </LoadingButton>
       </Form>
     </FormikProvider>

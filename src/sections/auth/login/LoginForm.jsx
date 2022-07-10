@@ -2,11 +2,14 @@ import * as Yup from 'yup';
 import { useState, useContext } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/actions/userAction";
 // material
 import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 export default function LoginForm() {
   const navigate = useNavigate();
+   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const LoginSchema = Yup.object().shape({
@@ -21,8 +24,7 @@ export default function LoginForm() {
     },
     validationSchema: LoginSchema,
     onSubmit: async (values, { setSubmitting }) => {
-      setSubmitting(false);
-      if (success) navigate('/dashboard/app', { replace: true });
+      dispatch(login(values))
     },
   });
 
