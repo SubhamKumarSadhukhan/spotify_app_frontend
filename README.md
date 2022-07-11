@@ -4,7 +4,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## SITE IS HOSTED AT
 
-https://main--startling-cannoli-361aa5.netlify.app
 [https://main--startling-cannoli-361aa5.netlify.app](https://main--startling-cannoli-361aa5.netlify.app)
 
 ## Available Scripts
