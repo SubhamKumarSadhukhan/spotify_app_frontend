@@ -2,11 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## SITE IS HOSTED AT
+
+https://main--startling-cannoli-361aa5.netlify.app
+[https://main--startling-cannoli-361aa5.netlify.app](https://main--startling-cannoli-361aa5.netlify.app)
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
+First of all set REACT_APP_BASE_URL in .env file to the backend uri link 
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

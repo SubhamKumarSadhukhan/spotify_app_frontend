@@ -27,7 +27,7 @@ export default function AddSong() {
     dispatch(getartists())
   }
     fetchartists()
-  },[])
+  },[dispatch])
   return (
     <RootStyle>
         <Container maxWidth="sm">
@@ -35,14 +35,8 @@ export default function AddSong() {
             <Typography variant="h4" gutterBottom>
               Add a new Song
             </Typography>
-            <Typography sx={{ color: 'text.secondary', mb: 1 }}>Enter your details below.</Typography>
+            <Typography sx={{ color: 'text.secondary', mb: 1 }}>Enter song details below.</Typography>
             <AddSongForm />
-              <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-                Don’t have an account?{' '}
-                <Link variant="subtitle2" component={RouterLink} to="/register">
-                  Get started
-                </Link>
-              </Typography>
           </ContentStyle>
         </Container>
       </RootStyle>)
