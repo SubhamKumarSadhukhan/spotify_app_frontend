@@ -27,7 +27,7 @@ export default function AddSong() {
     dispatch(getartists())
   }
     fetchartists()
-  },[fetchartists])
+  },[])
   return (
     <RootStyle>
         <Container maxWidth="sm">
