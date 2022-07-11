@@ -1,7 +1,7 @@
 import {Typography,Paper,Box,Grid,Button,} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import {useNavigate  } from "react-router-dom"
-import { styled ,Rating,TableBody,TableRow,TableHead,TableContainer,tableCellClasses,TableCell,Table} from '@mui/material';
+import { styled ,TableBody,TableRow,TableHead,TableContainer,tableCellClasses,TableCell,Table} from '@mui/material';
 import moment from "moment"
 import {useSelector,useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -63,7 +63,7 @@ export default function Top10Artists() {
           {top10songs.map((row,idx) => {
             let k=""
             row.artists.forEach((value,idx)=>{
-              if(idx!=row.artists.length-1)
+              if(idx!==row.artists.length-1)
             k+=value+","
             else 
             k+=value})

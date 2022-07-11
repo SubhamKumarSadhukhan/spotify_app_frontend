@@ -27,7 +27,7 @@ export default function AddSong() {
   }
     useEffect(()=>{
     fetchartists()
-  },[])
+  },[fetchartists])
   return (
     <RootStyle>
         <Container maxWidth="sm">
