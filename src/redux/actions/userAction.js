@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-let baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
+let baseURL = process.env.REACT_APP_BASE_URL; 
 export const getuser = () => async (dispatch) => {
   try {
     console.log("lol");
