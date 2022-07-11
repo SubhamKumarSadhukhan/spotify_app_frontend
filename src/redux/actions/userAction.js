@@ -40,7 +40,7 @@ export const login = (values) => async (dispatch) => {
 };
 export const register = (values) => async (dispatch) => {
   try {
-    const { data } = await axios.post(baseURL + "/api/register", values, {
+    await axios.post(baseURL + "/api/register", values, {
       withCredentials: true,
     });
     toast.success("Register successfully");

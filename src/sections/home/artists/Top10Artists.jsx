@@ -1,5 +1,5 @@
-import {Typography,Paper,Box,Grid,Button,} from '@mui/material';
-import { styled ,Rating,TableBody,TableRow,TableHead,TableContainer,tableCellClasses,TableCell,Table} from '@mui/material';
+import {Typography,Paper,Box,Grid,} from '@mui/material';
+import { styled ,TableBody,TableRow,TableHead,TableContainer,tableCellClasses,TableCell,Table} from '@mui/material';
 import moment from "moment"
 import {useSelector,useDispatch} from "react-redux"
 import {useEffect} from "react"
@@ -54,7 +54,7 @@ export default function Top10Artists() {
           {top10artists.map((row,idx) => {
             let k=""
             row.songs.forEach((value,idx)=>{
-              if(idx!=row.songs.length-1)
+              if(idx!==row.songs.length-1)
             k+=value+","
             else 
             k+=value})

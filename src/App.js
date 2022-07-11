@@ -17,7 +17,7 @@ function App() {
   const check = useSelector((state) => state.check);
   useEffect(() => {
     dispatch(getuser());
-  }, []);
+  }, [dispatch]);
   if (!check)
     return (
       <Box sx={{ display: "flex" }}>

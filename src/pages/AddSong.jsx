@@ -22,12 +22,12 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 export default function AddSong() {
   const dispatch=useDispatch()
-  async function fetchartists(){
+    useEffect(()=>{
+      async function fetchartists(){
     dispatch(getartists())
   }
-    useEffect(()=>{
     fetchartists()
-  },[])
+  },[fetchartists])
   return (
     <RootStyle>
         <Container maxWidth="sm">

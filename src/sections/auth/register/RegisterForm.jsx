@@ -1,9 +1,8 @@
 import * as Yup from 'yup';
-import { useState, useContext } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 // material
-import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
+import { Link, Stack,  TextField } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useDispatch} from "react-redux"
 // component
@@ -29,7 +28,7 @@ export default function LoginForm() {
     },
   });
 
-  const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
+  const { errors, touched,  isSubmitting, handleSubmit, getFieldProps } = formik;
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
