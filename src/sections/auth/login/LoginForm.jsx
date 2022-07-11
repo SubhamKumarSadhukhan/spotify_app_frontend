@@ -24,9 +24,6 @@ export default function LoginForm() {
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
-    const handleChange = (newValue) => {
-    setValue(newValue);
-  };
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
