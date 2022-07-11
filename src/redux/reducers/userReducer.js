@@ -5,6 +5,7 @@ const initState = {
   email: "",
   top10songs: [],
   top10artists: [],
+  artists: [],
 };
 const userReducer = (state = initState, action) => {
   switch (action.type) {
@@ -28,6 +29,8 @@ const userReducer = (state = initState, action) => {
       return { ...state, top10songs: action.payload };
     case "SET_TOP_10_ARTISTS":
       return { ...state, top10artists: action.payload };
+    case "SET_ARTISTS":
+      return { ...state, artists: action.payload };
     default:
       return { ...state };
   }

@@ -43,7 +43,7 @@ export default function Top10Artists() {
         </Typography>
         </Grid>
         <Grid item xs={6} align="right" p={5} mt={5}>
-          <Button onClick={()=>navigate("/login")} style={{
+          <Button onClick={()=>navigate("/addsong")} style={{
         backgroundColor: "#616161",
     }} variant="contained"><AddIcon/> Add Song</Button>
         </Grid>
@@ -60,7 +60,7 @@ export default function Top10Artists() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {top10songs.map((row) => {
+          {top10songs.map((row,idx) => {
             let k=""
             row.artists.forEach((value,idx)=>{
               if(idx!=row.artists.length-1)
@@ -68,10 +68,10 @@ export default function Top10Artists() {
             else 
             k+=value})
             return (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.id}>
               <StyledTableCell align="center" >
                 <img
-        src={`https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png`}
+        src={row.cover}
         alt={row.title} height={100}
         loading="lazy"
       />
@@ -79,7 +79,7 @@ export default function Top10Artists() {
               <StyledTableCell align="center">{row.name}</StyledTableCell>
               <StyledTableCell align="center">{moment(row.date_of_release).format('LL')}</StyledTableCell>
               <StyledTableCell align="center">{k}</StyledTableCell>
-              <StyledTableCell align="center"><Ratings rate={row.rate}/></StyledTableCell>
+              <StyledTableCell align="center"><Ratings song_id={row.id} rate={row.rate}/></StyledTableCell>
             </StyledTableRow>
           )}
           )}

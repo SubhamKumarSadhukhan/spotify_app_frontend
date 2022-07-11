@@ -10,7 +10,6 @@ import { useDispatch} from "react-redux"
 import { register } from "../../../redux/actions/userAction";
 export default function LoginForm() {
   const dispatch=useDispatch()
-  const navigate = useNavigate();
   const LoginSchema = Yup.object().shape({
     name:Yup.string().min(3).required('Invalid Name'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),

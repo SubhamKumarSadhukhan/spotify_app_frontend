@@ -51,7 +51,7 @@ export default function Top10Artists() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {top10artists.map((row) => {
+          {top10artists.map((row,idx) => {
             let k=""
             row.songs.forEach((value,idx)=>{
               if(idx!=row.songs.length-1)
@@ -59,7 +59,7 @@ export default function Top10Artists() {
             else 
             k+=value})
             return (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={idx}>
               <StyledTableCell align="center">{row.name}</StyledTableCell>
               <StyledTableCell align="center">{moment(row.dob).format('LL')}</StyledTableCell>
               <StyledTableCell align="center">{k}</StyledTableCell>

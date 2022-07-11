@@ -1,17 +1,12 @@
 import * as Yup from 'yup';
-import { useState, useContext } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/actions/userAction";
 // material
-import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
+import {  Stack,TextField} from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 export default function LoginForm() {
-  const navigate = useNavigate();
    const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false);
-
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
@@ -29,11 +24,9 @@ export default function LoginForm() {
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
-
-  const handleShowPassword = () => {
-    setShowPassword((show) => !show);
+    const handleChange = (newValue) => {
+    setValue(newValue);
   };
-
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
@@ -51,7 +44,7 @@ export default function LoginForm() {
           <TextField
             fullWidth
             autoComplete="current-password"
-            type={showPassword ? 'text' : 'password'}
+            type={ 'password'}
             label="Password"
             {...getFieldProps('password')}
             error={Boolean(touched.password && errors.password)}
